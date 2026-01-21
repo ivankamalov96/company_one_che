@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ООО «ПИК-Интегратор» | Проектирование, программирование и ПНР АСУТП, АСДУЭ, АСКУЭ</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Базовые стили и сброс */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Стили для шапки */
+        header {
+            background: linear-gradient(135deg, #0d2b6e 0%, #1a3a8f 100%);
+            color: white;
+            padding: 2rem 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo i {
+            margin-right: 10px;
+            color: #4fc3f7;
+        }
+
+        .tagline {
+            font-size: 1rem;
+            opacity: 0.9;
+            margin-top: 5px;
+            font-weight: 300;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 2rem;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            font-size: 1.1rem;
+        }
+
+        nav ul li a:hover {
+            color: #4fc3f7;
+        }
+
+        /* Герой-секция */
+        .hero {
+            padding: 5rem 0;
+            background: white;
+            text-align: center;
+            background: linear-gradient(rgba(255,255,255,0.95), rgba(255,255,255,0.95)), url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1.5rem;
+            color: #0d2b6e;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            color: #555;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(to right, #0d2b6e, #1a3a8f);
+            color: white;
+            padding: 1rem 2.5rem;
+            font-size: 1.2rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(13, 43, 110, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(13, 43, 110, 0.4);
+            background: linear-gradient(to right, #1a3a8f, #2d5cc2);
+        }
+
+        /* Секция услуг */
+        .services {
+            padding: 5rem 0;
+            background-color: #f1f5fd;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #0d2b6e;
+            position: relative;
+        }
+
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: #4fc3f7;
+            margin: 10px auto;
+            border-radius: 2px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2.5rem 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            color: #0d2b6e;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #222;
+        }
+
+        .service-card p {
+            color: #666;
+            text-align: left;
+        }
+
+        .tech-list {
+            margin-top: 1rem;
+            text-align: left;
+        }
+
+        .tech-list ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .tech-list li {
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .tech-list li:before {
+            content: "▸";
+            color: #4fc3f7;
+            position: absolute;
+            left: 0;
+        }
+
+        /* Секция "О компании" */
+        .about {
+            padding: 5rem 0;
+            background: white;
+        }
+
+        .about-content {
+            display: flex;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 3rem;
+        }
+
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .about-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: #0d2b6e;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            color: #555;
+        }
+
+        .company-details {
+            flex: 1;
+            min-width: 300px;
+            background: #f1f5fd;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .detail-item {
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .detail-item:last-child {
+            border-bottom: none;
+        }
+
+        .detail-label {
+            font-weight: 600;
+            color: #0d2b6e;
+            display: block;
+            margin-bottom: 0.3rem;
+        }
+
+        .detail-value {
+            color: #555;
+        }
+
+        /* Банковские реквизиты */
+        .bank-details {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 2px solid #4fc3f7;
+        }
+
+        /* Секция контактов */
+        .contact {
+            padding: 5rem 0;
+            background: #f1f5fd;
+            text-align: center;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .contact-item {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            min-width: 250px;
+        }
+
+        .contact-item i {
+            font-size: 2.5rem;
+            color: #0d2b6e;
+            margin-bottom: 1rem;
+        }
+
+        .contact-item h3 {
+            margin-bottom: 0.5rem;
+            color: #222;
+        }
+
+        .contact-email {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #0d2b6e;
+            text-decoration: none;
+            border-bottom: 2px dashed #4fc3f7;
+            padding-bottom: 2px;
+        }
+
+        .contact-email:hover {
+            color: #2d5cc2;
+        }
+
+        /* Подвал */
+        footer {
+            background: #0d2b6e;
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .copyright {
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+
+        .signature {
+            font-style: italic;
+            margin-top: 1rem;
+            opacity: 0.9;
+        }
+
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            nav ul {
+                margin-top: 1.5rem;
+                justify-content: center;
+            }
+            nav ul li {
+                margin: 0 0.8rem;
+            }
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            .hero p {
+                font-size: 1.1rem;
+            }
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            .contact-info {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Шапка с навигацией -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-industry"></i>
+                    <div>
+                        <div>ООО «ПИК-Интегратор»</div>
+                        <div class="tagline">Проектирование, программирование и ПНР АСУТП, АСДУЭ, АСКУЭ</div>
+                    </div>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#services">Услуги</a></li>
+                        <li><a href="#about">О компании</a></li>
+                        <li><a href="#contact">Контакты</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Герой-секция -->
+    <section class="hero">
+        <div class="container">
+            <h1>Полный цикл автоматизации промышленных объектов</h1>
+            <p>Проектирование, программирование, пуско-наладка и ввод в эксплуатацию систем АСУТП, АСДУЭ и АСКУЭ. Экспертиза в настройке контроллеров и SCADA-систем ведущих мировых производителей.</p>
+            <a href="#contact" class="cta-button">Запросить коммерческое предложение</a>
+        </div>
+    </section>
+
+    <!-- Услуги -->
+    <section id="services" class="services">
+        <div class="container">
+            <h2 class="section-title">Наши услуги</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>ПНР АСУТП. Средний уровень</h3>
+                    <p>Программирование промышленных контроллеров:</p>
+                    <div class="tech-list">
+                        <ul>
+                            <li>Siemens S7-300 / S7-400 / S7-1200 / S7-1500</li>
+                            <li>Yokogawa Centum FCS / SCS</li>
+                            <li>ABB AC800FR</li>
+                            <li>Schneider Electric TM172 / TM241</li>
+                            <li>ProSoftRegul R500 / R500S</li>
+                            <li>БАЗИС-100 / БАЗИС-21</li>
+                            <li>ПАС-05</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-desktop"></i>
+                    </div>
+                    <h3>ПНР АСУТП. Верхний уровень</h3>
+                    <p>Визуализация мнемосхем SCADA-систем:</p>
+                    <div class="tech-list">
+                        <ul>
+                            <li>Yokogawa Centum VP</li>
+                            <li>Siemens WinCC</li>
+                            <li>ABB Freelancer</li>
+                            <li>Schneider Electric EcoStruxure</li>
+                            <li>ProSoftAstraRegul</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>ПНЭР АСДУЭ, АСКУЭ</h3>
+                    <div class="tech-list">
+                        <ul>
+                            <li><strong>Полевой уровень:</strong> Конфигурирование многофункциональных преобразователей, терминалов РЗА, приборов учета</li>
+                            <li><strong>Средний уровень:</strong> Настройка контроллеров телемеханики, систем АСДУЭ, АСКУЭ</li>
+                            <li><strong>Верхний уровень:</strong> Визуализация мнемосхем и настройка обмена данными в SCADA-системах АСДУЭ, АСКУЭ</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-drafting-compass"></i>
+                    </div>
+                    <h3>Проектирование</h3>
+                    <div class="tech-list">
+                        <ul>
+                            <li>Систем телемеханики</li>
+                            <li>АСДУЭ (Автоматизированных систем диспетчерского управления в электроэнергетике)</li>
+                            <li>АСКУЭ (Автоматизированных систем коммерческого учета электроэнергии)</li>
+                            <li>Сети связи и телекоммуникации</li>
+                            <li>Систем электроснабжения</li>
+                            <li>Технологические присоединения</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- О компании -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">О компании</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>ООО «ПИК-Интегратор»</h2>
+                    <p>Мы специализируемся на комплексной автоматизации промышленных предприятий и энергетических объектов. Наша команда обладает уникальной экспертизой в области проектирования, программирования и пуско-наладки систем АСУТП, АСДУЭ и АСКУЭ.</p>
+                    <p>Работаем с оборудованием ведущих мировых производителей: Siemens, Yokogawa, ABB, Schneider Electric, ProSoft и отечественными разработками.</p>
+                    <p>Предлагаем полный цикл услуг — от разработки проектной документации до ввода систем в промышленную эксплуатацию с гарантийным обслуживанием.</p>
+                </div>
+                <div class="company-details">
+                    <h3 style="color: #0d2b6e; margin-bottom: 1.5rem;">Реквизиты компании</h3>
+                    
+                    <div class="detail-item">
+                        <span class="detail-label">Полное наименование:</span>
+                        <span class="detail-value">Общество с ограниченной ответственностью «ПИК-ИНТЕГРАТОР»</span>
+                    </div>
+                    
+                    <div class="detail-item">
+                        <span class="detail-label">Сокращенное наименование:</span>
+                        <span class="detail-value">ООО «ПИК-Интегратор»</span>
+                    </div>
+                    
+                    <div class="detail-item">
+                        <span class="detail-label">Юридический адрес:</span>
+                        <span class="detail-value">423812, Российская Федерация, Республика Татарстан, г. Набережные Челны, ул. Ахметшина, здание 123А, офис 211</span>
+                    </div>
+                    
+                    <div class="detail-item">
+                        <span class="detail-label">ИНН:</span>
+                        <span class="detail-value">1650449525</span>
+                    </div>
+                    
+                    <div class="detail-item">
+                        <span class="detail-label">КПП:</span>
+                        <span class="detail-value">1650041001</span>
+                    </div>
+                    
+                    <div class="detail-item">
+                        <span class="detail-label">ОГРН:</span>
+                        <span class="detail-value">1251600056487</span>
+                    </div>
+                    
+                    <div class="bank-details">
+                        <h4 style="color: #0d2b6e; margin-bottom: 1rem;">Банковские реквизиты</h4>
+                        
+                        <div class="detail-item">
+                            <span class="detail-label">Банк:</span>
+                            <span class="detail-value">Филиал «Нижегородский» АО «Альфа-Банк»</span>
+                        </div>
+                        
+                        <div class="detail-item">
+                            <span class="detail-label">Расчетный счет:</span>
+                            <span class="detail-value">№ 40702810929140011465</span>
+                        </div>
+                        
+                        <div class="detail-item">
+                            <span class="detail-label">БИК:</span>
+                            <span class="detail-value">042202824</span>
+                        </div>
+                        
+                        <div class="detail-item">
+                            <span class="detail-label">Корреспондентский счет:</span>
+                            <span class="detail-value">№ 30101810200000000824</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Контакты -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Контакты</h2>
+            <p>Свяжитесь с нами для обсуждения вашего проекта или получения коммерческого предложения</p>
+            
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fas fa-user-tie"></i>
+                    <h3>Директор</h3>
+                    <p>Камалов Андрей Альбертович</p>
+                    <p>Действует на основании Устава</p>
+                </div>
+                
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <h3>Телефон</h3>
+                    <p>+7 (987) 422-25-87</p>
+                </div>
+                
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <h3>E-mail</h3>
+                    <p>
+                        <a href="mailto:andrey.kama@mail.ru" class="contact-email">
+                            andrey.kama@mail.ru
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Подвал -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <i class="fas fa-industry"></i> ООО «ПИК-Интегратор»
+                </div>
+                <div class="copyright">
+                    &copy; <span id="currentYear"></span> Все права защищены.<br>
+                    <div class="signature">
+                        Директор ООО «ПИК-Интегратор»<br>
+                        Камалов Андрей Альбертович
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Простой скрипт для установки текущего года в подвале
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        // Плавная прокрутка для якорных ссылок
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
